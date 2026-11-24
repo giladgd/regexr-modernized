@@ -1,0 +1,173 @@
+@mixin --hover() {
+    &:hover:where(.fine-pointer *) { @contents; }
+}
+
+@mixin --title() {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--pad) 0 var(--pad);
+    flex: 0 var(--title-height);
+
+    h1 {
+        flex: 1;
+    }
+}
+
+@mixin --link() {
+    transition: color var(--transition-t) var(--transition-easing);
+    color: var(--lighter);
+
+    &:not(.inactive) {
+        cursor: pointer;
+
+        @apply --hover {
+            color: var(--lightest);
+
+            svg.icon {
+                color: currentColor;
+            }
+        }
+    }
+
+    svg.icon {
+        transition: fill var(--transition-t) var(--transition-easing);
+    }
+}
+
+@mixin --ellipsis() {
+    background: var(--dark);
+    color: var(--white);
+    font-weight: normal;
+    padding: 0 0.25em;
+    margin-left: 0.25em;
+}
+
+@mixin --selected-token() {
+    outline: var(--selected-stroke);
+    z-index: 10;
+}
+
+@mixin --related-token() {
+    outline: var(--related-stroke);
+    z-index: 9;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: clip;
+    touch-action: manipulation;
+    background: var(--page);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--doc-darkest);
+    user-select: none;
+    cursor: default;
+
+
+    > .container {
+        overflow: clip;
+        /* wraps all content, since flex layouts don't work reliably on body */
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+
+        > .app {
+            /* wraps the sidebar and doc */
+            flex: 1;
+            min-height: 0; /* fix for Chrome 72+ */
+            display: flex;
+            align-items: stretch;
+        }
+    }
+}
+
+#scrollbar-probe {
+    position: fixed;
+    width: 64px;
+    height: 64px;
+    overflow: scroll;
+    visibility: hidden;
+}
+:where(.classic-scrollbars :not(#scrollbar-probe)) {
+    &::-webkit-scrollbar { width: 0.5em; height: 0.5em; }
+    &::-webkit-scrollbar-track { background: rgb(from var(--mid) r g b / 0.25); }
+    &::-webkit-scrollbar-thumb { background-color: var(--mid); border-radius: 0.5em; }
+}
+
+.app .sidebar, .container .header, .tooltip  {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+code, pre {
+    font-family: var(--monospace);
+}
+
+pre {
+    margin: 0;
+}
+
+a {
+    @apply --link;
+    color: var(--theme-color);
+    text-decoration: none;
+
+    &[href]:not(.icon-button) {
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+        @apply --hover { color: var(--doc-darkest); }
+    }
+}
+
+h1, h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+
+    li {
+        display: block;
+    }
+}
+
+hr {
+    border: 0;
+    border-top: var(--divider);
+    margin: 0.75em 0 1em 0;
+}
+
+span.match {
+    background: var(--match-color);
+    color: var(--doc-black);
+}
+
+span.error {
+    color: var(--error-color);
+    font-weight: bold;
+
+    &.warning {
+        color: var(--warning-color);
+    }
+}
+
+.anim-spin {
+    animation: 1s linear infinite spin;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

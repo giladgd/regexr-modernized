@@ -1,0 +1,59 @@
+/*  CodeMirror */
+
+.CodeMirror {
+    font-family: var(--monospace);
+    background: none;
+    position: absolute; /* need this, and a wrapper with `position:relative` to work in a flexbox */
+    box-sizing: border-box;
+
+    div.CodeMirror-cursor {
+        pointer-events: none; /* this doesn't work in IE<11 */
+        border-left: 1px solid var(--doc-black);
+    }
+}
+
+.CodeMirror-selected {
+    background: var(--selection);
+}
+
+.CodeMirror-focused .CodeMirror-selected {
+    background: var(--text-selection);
+}
+
+::selection, .CodeMirror .CodeMirror-line ::selection, .CodeMirror .CodeMirror-line::selection {
+    background: var(--text-selection);
+}
+
+/* this works, but of course the character isn't selectable, or highlightable: */
+.editor.multiline {
+    .CodeMirror-line:not(:last-child)>span:after {
+        pointer-events: none;
+        color: var(--invischar-color);
+        content: "\AC"; /* ¬ alternately: \B6 ¶ */
+    }
+}
+
+.CodeMirror-line {
+    .cm-space::before, .cm-special::before {
+        color: var(--invischar-color);
+        content: "•"; /* alternately: \B7 · */
+        position: absolute;
+    }
+
+    .cm-special::before {
+        color: var(--error-color);
+    }
+
+    .cm-tab {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--invischar-color);
+            mask: url("/assets/icons/tab.svg") right center / 1em no-repeat;
+            pointer-events: none;
+        }
+    }
+}

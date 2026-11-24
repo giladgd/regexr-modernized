@@ -1,0 +1,75 @@
+.doc > section.tools > article .details {
+
+    > div.desc {
+        padding: calc(var(--pad) * 0.5);
+        color: var(--doc-mid);
+        margin-bottom: 0.5em;
+
+        code {
+            color: var(--doc-dark);
+            font-weight: bold;
+        }
+    }
+
+    table {
+        font-family: var(--monospace);
+        width: 100%;
+        border-spacing: 0;
+        border: 0;
+
+        tr:nth-child(odd) td {
+            background: color-mix(in srgb, var(--doc-lighter) 40%, var(--doc-lightest));
+        }
+
+        tr.match td {
+            background: var(--doc-lighter);
+            border-bottom: 1px dotted var(--doc-light);
+        }
+
+        tr.group {
+            @apply --hover { @apply --selected-token; }
+        }
+
+        td {
+            padding: calc(var(--pad) * 0.5) var(--pad);
+            vertical-align: top;
+
+            &:first-child {
+                font-weight: bold;
+                white-space: nowrap;
+                padding-right: 0;
+            }
+
+            &:nth-child(2) {
+                color: var(--doc-mid);
+                white-space: nowrap;
+                border-right: 1px dotted var(--doc-light);
+            }
+
+            &:nth-child(3) {
+                white-space: pre-wrap;
+                width: 100%;
+                color: var(--doc-black);
+                user-select: text;
+                user-select: contain;
+
+                em {
+                    color: var(--doc-mid);
+                }
+            }
+        }
+    }
+
+    span.hover {
+        @apply --selected-token;
+    }
+
+    .group-1 { background: hsla(60, 100%, 50%, var(--details-group-alpha)); }
+    .group-2 { background: hsla(120, 100%, 50%, var(--details-group-alpha)); }
+    .group-3 { background: hsla(230, 100%, 70%, var(--details-group-alpha)); }
+    .group-4 { background: hsla(280, 100%, 60%, var(--details-group-alpha)); }
+    .group-5 { background: hsla(-10, 100%, 60%, var(--details-group-alpha)); }
+    .group-0 { background: hsla(30, 100%, 50%, var(--details-group-alpha)); }
+    .group-0, .group-1, .group-2, .group-3, .group-4, .group-5 { outline: 0.5px solid rgb(from var(--doc-black) r g b / 0.25); }
+
+}

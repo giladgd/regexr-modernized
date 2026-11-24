@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-lang="pageTitle"></title>
+
+    <!-- basic meta tags -->
+    <script type="module" blocking="render" src="/main.ts"></script>
+    <meta name="description" data-lang-content="siteDescription" />
+    <link rel="canonical" href="https://regexr-modernized.giladgd.com/">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "RegExr (modernized)",
+            "url": "https://regexr-modernized.giladgd.com/"
+        }
+    </script>
+
+    <!-- mobile -->
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png?1">
+    <link rel="icon" href="/assets/icons/favicon.ico?1" sizes="16x16 32x32 48x48" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="/assets/icons/favicon-dark.ico" sizes="16x16 32x32 48x48" media="(prefers-color-scheme: dark)">
+    <link rel="manifest" href="/assets/icons/site.webmanifest?1">
+    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg?1" color="#70b0e0">
+    <meta name="apple-mobile-web-app-title" content="RegExr">
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="RegExr">
+    <meta name="msapplication-TileColor" content="#70b0e0">
+    <meta name="msapplication-config" content="/assets/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ececec" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1f1f1f" media="(prefers-color-scheme: dark)">
+
+    <!-- social -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://regexr-modernized.giladgd.com/"/>
+    <meta property="og:image" content="https://regexr-modernized.giladgd.com/assets/og.png"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" data-lang-content="previewDescription"/>
+    <meta property="og:title" data-lang-content="pageTitle"/>
+    <meta property="og:description" data-lang-content="siteDescription"/>
+    <meta property="og:site_name" content="RegExr (modernized)"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="@giladgd"/>
+    <meta name="twitter:title" data-lang-content="pageTitle"/>
+    <meta name="twitter:description" data-lang-content="siteDescription"/>
+    <meta name="twitter:image" content="https://regexr-modernized.giladgd.com/assets/card.png"/>
+    <meta name="twitter:image:alt" data-lang-content="previewDescription"/>
+</head>
+
+<body>
+    <div id="scrollbar-probe" inert></div>
+    <div style="display:none;">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <symbol id="RegExr" viewBox="0 0 64 64"><path fill="var(--logo-background)" d="M12 0h40a12 12 0 0 1 12 12v40a12 12 0 0 1-12 12H12A12 12 0 0 1 0 52V12A12 12 0 0 1 12 0Z"/><path fill="var(--logo-foreground)" d="M23.799 52.045H11.783V40.029h12.016v12.016zm29.957-22.401l-5.396 5.235-6.765-11.033L34.67 35.12l-5.396-5.235 9.744-7.328-13.046-4.188 3.785-6.604 10.711 8.617L37.65 7.739h7.57l-2.899 12.643 10.791-8.617 3.785 6.604-12.804 4.027 9.663 7.248z"/></symbol>
+            <symbol id="github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></symbol>
+            <symbol id="add" viewBox="0 0 24 24"><path fill="currentColor" d="M18 13h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H6c-.55 0-1-.45-1-1s.45-1 1-1h5V6c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1"/></symbol>
+            <symbol id="alert" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 11c-.55 0-1-.45-1-1V8c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1m1 4h-2v-2h2z"/></symbol>
+            <symbol id="arrowleft" viewBox="0 0 24 24"><path fill="currentColor" d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42a.996.996 0 0 0-1.41 0l-6.59 6.59a.996.996 0 0 0 0 1.41l6.59 6.59a.996.996 0 1 0 1.41-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1"/></symbol>
+            <symbol id="arrowright" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 6.71a.996.996 0 0 0 0 1.41L13.17 12l-3.88 3.88a.996.996 0 1 0 1.41 1.41l4.59-4.59a.996.996 0 0 0 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01"/></symbol>
+            <symbol id="arrow-insert" viewBox="0 -960 960 960"><path fill="currentColor" d="M640-624v304q0 17 11.5 28.5T680-280q17 0 28.5-11.5T720-320v-400q0-17-11.5-28.5T680-760H280q-17 0-28.5 11.5T240-720q0 17 11.5 28.5T280-680h304L228-324q-11 11-11 28t11 28q11 11 28 11t28-11L640-624Z"/></symbol>
+            <symbol id="cheatsheet" viewBox="0 0 24 24"><path fill="currentColor" d="M14.59 2.59c-.38-.38-.89-.59-1.42-.59H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8.83c0-.53-.21-1.04-.59-1.41zM15 18H9c-.55 0-1-.45-1-1s.45-1 1-1h6c.55 0 1 .45 1 1s-.45 1-1 1m0-4H9c-.55 0-1-.45-1-1s.45-1 1-1h6c.55 0 1 .45 1 1s-.45 1-1 1m-2-6V3.5L18.5 9H14c-.55 0-1-.45-1-1"/></symbol>
+            <symbol id="check" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"/></symbol>
+            <symbol id="chevron" viewBox="0 0 24 24"><path fill="currentColor" d="M15.88 9.29L12 13.17L8.12 9.29a.996.996 0 1 0-1.41 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 0 0 0-1.41c-.39-.38-1.03-.39-1.42 0"/></symbol>
+            <symbol id="check-bold" viewBox="0 -960 960 960"><path fill="currentColor" d="m382-388 321-321q19-19 45-19t45 19q19 19 19 45t-19 45L427-253q-19 19-45 19t-45-19L167-423q-19-19-19-45t19-45q19-19 45-19t45 19l125 125Z"/></symbol>
+            <symbol id="close-bold" viewBox="0 -960 960 960"><path fill="currentColor" d="M480-392 300-212q-18 18-44 18t-44-18q-18-18-18-44t18-44l180-180-180-180q-18-18-18-44t18-44q18-18 44-18t44 18l180 180 180-180q18-18 44-18t44 18q18 18 18 44t-18 44L568-480l180 180q18 18 18 44t-18 44q-18 18-44 18t-44-18L480-392Z"/></symbol>
+            <symbol id="delete" viewBox="0 0 24 24"><path fill="currentColor" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2zM18 4h-2.5l-.71-.71c-.18-.18-.44-.29-.7-.29H9.91c-.26 0-.52.11-.7.29L8.5 4H6c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1"/></symbol>
+            <symbol id="edit" viewBox="0 0 24 24"><path fill="currentColor" d="M3 17.46v3.04c0 .28.22.5.5.5h3.04c.13 0 .26-.05.35-.15L17.81 9.94l-3.75-3.75L3.15 17.1q-.15.15-.15.36M20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83l3.75 3.75z"/></symbol>
+            <symbol id="distractor" viewBox="0 0 24 24"><path fill="currentColor" d="M17.65 6.35a7.95 7.95 0 0 0-6.48-2.31c-3.67.37-6.69 3.35-7.1 7.02C3.52 15.91 7.27 20 12 20a7.98 7.98 0 0 0 7.21-4.56c.32-.67-.16-1.44-.9-1.44c-.37 0-.72.2-.88.53a5.994 5.994 0 0 1-6.8 3.31c-2.22-.49-4.01-2.3-4.48-4.52A6.002 6.002 0 0 1 12 6c1.66 0 3.14.69 4.22 1.78l-1.51 1.51c-.63.63-.19 1.71.7 1.71H19c.55 0 1-.45 1-1V6.41c0-.89-1.08-1.34-1.71-.71z"/></symbol>
+            <symbol id="flags" viewBox="0 0 24 24"><path fill="currentColor" d="m14.4 6l-.24-1.2c-.09-.46-.5-.8-.98-.8H6c-.55 0-1 .45-1 1v15c0 .55.45 1 1 1s1-.45 1-1v-6h5.6l.24 1.2c.09.47.5.8.98.8H19c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1z"/></symbol>
+            <symbol id="help" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m-1-4h2v2h-2zm1.61-9.96c-2.06-.3-3.88.97-4.43 2.79c-.18.58.26 1.17.87 1.17h.2c.41 0 .74-.29.88-.67c.32-.89 1.27-1.5 2.3-1.28c.95.2 1.65 1.13 1.57 2.1c-.1 1.34-1.62 1.63-2.45 2.88c0 .01-.01.01-.01.02c-.01.02-.02.03-.03.05c-.09.15-.18.32-.25.5c-.01.03-.03.05-.04.08c-.01.02-.01.04-.02.07c-.12.34-.2.75-.2 1.25h2c0-.42.11-.77.28-1.07c.02-.03.03-.06.05-.09c.08-.14.18-.27.28-.39c.01-.01.02-.03.03-.04c.1-.12.21-.23.33-.34c.96-.91 2.26-1.65 1.99-3.56c-.24-1.74-1.61-3.21-3.35-3.47"/></symbol>
+            <symbol id="history" viewBox="0 0 24 24"><path fill="currentColor" d="M13.26 3C8.17 2.86 4 6.95 4 12H2.21c-.45 0-.67.54-.35.85l2.79 2.8c.2.2.51.2.71 0l2.79-2.8a.5.5 0 0 0-.36-.85H6c0-3.9 3.18-7.05 7.1-7c3.72.05 6.85 3.18 6.9 6.9c.05 3.91-3.1 7.1-7 7.1c-1.61 0-3.1-.55-4.28-1.48a.994.994 0 0 0-1.32.08c-.42.42-.39 1.13.08 1.49A8.86 8.86 0 0 0 13 21c5.05 0 9.14-4.17 9-9.26c-.13-4.69-4.05-8.61-8.74-8.74m-.51 5c-.41 0-.75.34-.75.75v3.68c0 .35.19.68.49.86l3.12 1.85c.36.21.82.09 1.03-.26c.21-.36.09-.82-.26-1.03l-2.88-1.71v-3.4c0-.4-.34-.74-.75-.74"/></symbol>
+            <symbol id="info" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 15c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1m1-8h-2V7h2z"/></symbol>
+            <symbol id="language" viewBox="0 -960 960 960"><path fill="currentColor" d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z"/></symbol>
+            <symbol id="moon" viewBox="0 0 24 24"><path fill="currentColor" d="M11.01 3.05C6.51 3.54 3 7.36 3 12a9 9 0 0 0 9 9c4.63 0 8.45-3.5 8.95-8c.09-.79-.78-1.42-1.54-.95A5.403 5.403 0 0 1 11.1 7.5c0-1.06.31-2.06.84-2.89c.45-.67-.04-1.63-.93-1.56"/></symbol>
+            <symbol id="more" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2s-2 .9-2 2s.9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2s2-.9 2-2s-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2s2-.9 2-2s-.9-2-2-2"/></symbol>
+            <symbol id="pin" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M19 12.87c0-.47-.34-.85-.8-.98A3 3 0 0 1 16 9V4h1c.55 0 1-.45 1-1s-.45-1-1-1H7c-.55 0-1 .45-1 1s.45 1 1 1h1v5c0 1.38-.93 2.54-2.2 2.89c-.46.13-.8.51-.8.98V13c0 .55.45 1 1 1h4.98l.02 7c0 .55.45 1 1 1s1-.45 1-1l-.02-7H18c.55 0 1-.45 1-1z"/></symbol>
+            <symbol id="reference" viewBox="0 0 24 24"><path fill="currentColor" d="M17.5 4.5c-1.95 0-4.05.4-5.5 1.5c-1.45-1.1-3.55-1.5-5.5-1.5c-1.45 0-2.99.22-4.28.79C1.49 5.62 1 6.33 1 7.14v11.28c0 1.3 1.22 2.26 2.48 1.94c.98-.25 2.02-.36 3.02-.36c1.56 0 3.22.26 4.56.92c.6.3 1.28.3 1.87 0c1.34-.67 3-.92 4.56-.92c1 0 2.04.11 3.02.36c1.26.33 2.48-.63 2.48-1.94V7.14c0-.81-.49-1.52-1.22-1.85c-1.28-.57-2.82-.79-4.27-.79M21 17.23c0 .63-.58 1.09-1.2.98c-.75-.14-1.53-.2-2.3-.2c-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5c.92 0 1.83.09 2.7.28c.46.1.8.51.8.98z"/><path fill="currentColor" d="M13.98 11.01c-.32 0-.61-.2-.71-.52c-.13-.39.09-.82.48-.94c1.54-.5 3.53-.66 5.36-.45c.41.05.71.42.66.83s-.42.71-.83.66c-1.62-.19-3.39-.04-4.73.39c-.08.01-.16.03-.23.03m0 2.66c-.32 0-.61-.2-.71-.52c-.13-.39.09-.82.48-.94c1.53-.5 3.53-.66 5.36-.45c.41.05.71.42.66.83s-.42.71-.83.66c-1.62-.19-3.39-.04-4.73.39a1 1 0 0 1-.23.03m0 2.66c-.32 0-.61-.2-.71-.52c-.13-.39.09-.82.48-.94c1.53-.5 3.53-.66 5.36-.45c.41.05.71.42.66.83s-.42.7-.83.66c-1.62-.19-3.39-.04-4.73.39a1 1 0 0 1-.23.03"/></symbol>
+            <symbol id="search" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0s.41-1.08 0-1.49zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14"/></symbol>
+            <symbol id="share" viewBox="0 0 24 24"><path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81c1.66 0 3-1.34 3-3s-1.34-3-3-3s-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65c0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92"/></symbol>
+            <symbol id="dock-to-right-outline-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm3-2V5H5v14zm2 0h9V5h-9zm-2 0H5z"/></symbol>
+            <symbol id="sun" viewBox="0 0 24 24"><path fill="currentColor" d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5s5-2.24 5-5s-2.24-5-5-5M2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1m18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1M11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1m0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1M5.99 4.58a.996.996 0 0 0-1.41 0a.996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41zm12.37 12.37a.996.996 0 0 0-1.41 0a.996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 0 0 0-1.41zm1.06-10.96a.996.996 0 0 0 0-1.41a.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0zM7.05 18.36a.996.996 0 0 0 0-1.41a.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0z"/></symbol>
+            <symbol id="tooltip-tip" viewBox="0 0 16 8"><path d="M0 0h16c-3 0-5 6.5-8 6.5S3 0 0 0Z"/></symbol>
+        </svg>
+    </div>
+    <div class="container">
+        <header class="header">
+            <div class="header-actions">
+                <button class="icon-button sidebar-toggle" data-lang-aria-label="closeSidebar" aria-controls="sidebar" aria-expanded="true"><svg class="icon" aria-hidden="true"><use href="#dock-to-right-outline-rounded"></use></svg></button>
+                <button class="icon-button new" data-lang-aria-label="new"><svg class="icon" aria-hidden="true"><use href="#add"></use></svg><span class="label" data-lang="new"></span></button>
+            </div>
+            <span class="brand intro"><svg class="icon" aria-hidden="true"><use href="#RegExr"></use></svg>RegExr <span class="modernized" data-lang="modernized"></span></span>
+            <div class="header-actions">
+                <button class="english-shortcut" lang="en" hidden><svg class="icon" aria-hidden="true"><use href="#language"></use></svg><span data-lang="switchToEnglish"></span></button>
+                <button class="icon-button copy-link" data-lang-aria-label="copyLink" data-lang-title="copyLink"><svg class="icon" aria-hidden="true"><use href="#share"></use></svg></button>
+                <button class="icon-button more" data-lang-aria-label="appOptions" popovertarget="app-options"><svg class="icon" aria-hidden="true"><use href="#more"></use></svg></button>
+            </div>
+            <div id="app-options" class="tooltip" popover>
+                <svg class="tip" viewBox="0 0 16 8" aria-hidden="true"><use href="#tooltip-tip"></use></svg>
+                <div class="content">
+                    <div class="action-menu">
+                        <button class="theme"><svg class="icon" aria-hidden="true"><use href="#moon"></use></svg><span data-lang="switchToDarkTheme"></span></button>
+                        <div class="action-menu language-picker">
+                            <button class="language-toggle" aria-expanded="false" aria-controls="language-options"><svg class="icon" aria-hidden="true"><use href="#language"></use></svg><span data-lang="language"></span><svg class="icon" aria-hidden="true"><use href="#arrowright"></use></svg></button>
+                            <div class="language-submenu" hidden>
+                                <div class="language-scroll">
+                                    <button type="button" class="icon-button scroll-down" data-lang-aria-label="showMoreLanguages" aria-controls="language-options" hidden><svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg></button>
+                                    <div id="language-options" class="action-menu"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{repositoryUrl}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span data-lang="repository"></span></a>
+                        <div class="credits">
+                            <div data-lang="modernizedBy"></div>
+                            <div data-lang="originalBy"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="app">
+            <aside class="sidebar" id="sidebar" data-lang-aria-label="sidebar">
+                <div class="full no-search" data-section="home">
+                    <header class="sidebar-title">
+                        <button class="icon-button back" data-lang-aria-label="back"><svg class="icon" aria-hidden="true"><use href="#arrowleft"></use></svg></button>
+                        <h2 data-lang="menu"></h2>
+                        <button class="icon-button history-options" data-lang-aria-label="historyOptions" data-lang-title="historyOptions"><svg class="icon" aria-hidden="true"><use href="#more"></use></svg></button>
+                    </header>
+                    <form class="search" role="search" data-lang-aria-label="reference">
+                        <button class="icon-button" type="submit" data-lang-aria-label="searchReference"><svg class="icon" aria-hidden="true"><use href="#search"></use></svg></button>
+                        <input type="search" data-lang-aria-label="searchReference" data-lang-placeholder="search">
+                        <button class="icon-button" type="button" data-lang-aria-label="clearSearch"><svg class="icon" aria-hidden="true"><use href="#close-bold"></use></svg></button>
+                    </form>
+                    <div class="scroll-pane menu-scroll"><ul class="list"></ul></div>
+                    <div class="scroll-pane content">
+                        <div class="content-body" data-lang="homeIntro"></div>
+                    </div>
+                </div>
+
+            </aside>
+
+            <main class="doc">
+                <div class="editor-island">
+                    <section class="expression">
+                        <header>
+                            <h1 data-lang="expression"></h1>
+                            <div class="controlbar">
+                                <button class="button flags">
+                                    <svg class="icon" aria-hidden="true"><use xlink:href="#flags"></use></svg>
+                                    <span class="label" data-lang="flags"></span>
+                                    <svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg>
+                                </button>
+                            </div>
+                        </header>
+                        <article class="editor"><svg class="icon alert"><use xlink:href="#alert"></use></svg></article>
+                    </section>
+
+                    <section class="text">
+                        <header>
+                            <h1>
+                                <ul class="segcontrol modelist"></ul>
+                            </h1>
+                            <button class="button add">
+                                <svg class="icon add" aria-hidden="true"><use xlink:href="#add"></use></svg>
+                                <span class="label" data-lang="addTest"></span>
+                            </button>
+                            <div class="controlbar">
+                                <div class="control result" data-lang="noMatch"></div>
+                            </div>
+                        </header>
+                        <article>
+                            <article class="editor multiline"><div class="pad">
+<textarea>
+RegExr was created by gskinner.com and was modernized by Gilad S.
+
+Edit the Expression & Text to see matches. Roll over matches or the expression for details. Validate your expression with Tests mode.
+
+The side bar includes a Cheatsheet, full Reference, and Help.
+
+Explore results with the Tools below. Replace & List output custom results. Details lists capture groups. Explain describes your expression in plain English.
+</textarea>
+                            </div></article>
+                            <div class="tests">
+                                <ul class="list"></ul>
+                                <button class="add button">
+                                    <svg class="icon add" aria-hidden="true"><use xlink:href="#add"></use></svg>
+                                    <span class="label" data-lang="addTest"></span>
+                                </button>
+                                <div class="default" data-lang="testIntro"></div>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+
+                <section class="tools">
+                    <header>
+                        <ul class="segcontrol toollist"></ul>
+                        <button class="icon-button max" data-lang-aria-label="collapseTools" aria-expanded="true" aria-controls="tool-content"><svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg></button>
+                    </header>
+                    <article id="tool-content">
+                        <button class="icon-button help" data-lang-aria-label="toolHelp"><svg class="icon" aria-hidden="true"><use href="#help"></use></svg></button>
+                        <div class="inputtool">
+                            <div class="editor"></div>
+                            <div class="result"></div>
+                        </div>
+                        <div class="content"></div>
+                    </article>
+                </section>
+            </main>
+        </div>
+    </div>
+    <div class="notice" role="status" hidden><span></span><button class="retry" hidden data-lang="retry"></button></div>
+    <div id="library" style="display:none;">
+
+        <div id="tooltip" class="tooltip">
+            <svg class="tip" viewBox="0 0 16 8" aria-hidden="true"><use href="#tooltip-tip"></use></svg>
+            <div class="content"></div>
+        </div>
+
+        <div id="tooltip-flags">
+            <header>
+                <h1 data-lang="expressionFlags"></h1>
+                <button class="icon-button help" data-lang-aria-label="flagsReference"><svg class="icon" aria-hidden="true"><use href="#help"></use></svg></button>
+            </header>
+            <hr>
+            <ul class="list"></ul>
+        </div>
+
+        <div id="tooltip-testtypes">
+            <ul class="list"></ul>
+        </div>
+
+        <div id="cheatsheet">
+            <table class="cheatsheet">
+                <tr><th colspan="2" data-id="charclasses" data-lang="cheatCharclasses"></th></tr>
+                <tr><td>.</td><td data-lang="cheatAny"></td></tr>
+                <tr><td>\w  \d  \s</td><td data-lang="cheatWord"></td></tr>
+                <tr><td>\W  \D  \S</td><td data-lang="cheatNotWord"></td></tr>
+                <tr><td>[abc]</td><td data-lang="cheatSet"></td></tr>
+                <tr><td>[^abc]</td><td data-lang="cheatNegatedSet"></td></tr>
+                <tr><td>[a-g]</td><td data-lang="cheatRange"></td></tr>
+
+                <tr><th colspan="2" data-id="anchors" data-lang="cheatAnchors"></th></tr>
+                <tr><td>^abc$</td><td data-lang="cheatStartEnd"></td></tr>
+                <tr><td>\b  \B</td><td data-lang="cheatBoundary"></td></tr>
+
+                <tr><th colspan="2" data-id="escchars" data-lang="cheatEscchars"></th></tr>
+                <tr><td>\.  \*  \\</td><td data-lang="cheatEscape"></td></tr>
+                <tr><td>\t  \n  \r</td><td data-lang="cheatWhitespace"></td></tr>
+
+                <tr><th colspan="2" data-id="groups" data-lang="cheatGroups"></th></tr>
+                <tr><td>(abc)</td><td data-lang="cheatGroup"></td></tr>
+                <tr><td>\1</td><td data-lang="cheatBackreference"></td></tr>
+                <tr><td>(?:abc)</td><td data-lang="cheatNonCapturing"></td></tr>
+                <tr><td>(?=abc)</td><td data-lang="cheatLookahead"></td></tr>
+                <tr><td>(?!abc)</td><td data-lang="cheatNegativeLookahead"></td></tr>
+
+                <tr><th colspan="2" data-id="quants" data-lang="cheatQuants"></th></tr>
+                <tr><td>a*  a+  a?</td><td data-lang="cheatQuantifiers"></td></tr>
+                <tr><td>a{5} a{2,}</td><td data-lang="cheatRepeat"></td></tr>
+                <tr><td>a{1,3}</td><td data-lang="cheatBetween"></td></tr>
+                <tr><td>a+? a{2,}?</td><td data-lang="cheatLazy"></td></tr>
+                <tr><td>ab|cd</td><td data-lang="cheatAlternation"></td></tr>
+            </table>
+        </div>
+
+        <div id="history-entries"></div>
+
+        <div id="tests_item">
+            <header>
+                <svg class="icon fail test-result" role="img"><title data-lang="failed"></title><use href="#close-bold"></use></svg>
+                <svg class="icon pass test-result" role="img"><title data-lang="passed"></title><use href="#check-bold"></use></svg>
+                <h1><input type="text" class="name" data-lang-placeholder="untitledTest"></h1>
+                <button class="button type">
+                    <span class="label" data-lang="matchAll"></span>
+                    <svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg>
+                </button>
+                <button class="icon-button delete" data-lang-aria-label="deleteTest"><svg class="icon" aria-hidden="true"><use href="#delete"></use></svg></button>
+            </header>
+            <article>
+                <div class="bar"></div>
+                <div class="editor multiline"><div class="pad"></div></div>
+            </article>
+        </div>
+    </div>
+
+</body>
+</html>

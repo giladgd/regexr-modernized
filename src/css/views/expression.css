@@ -1,0 +1,131 @@
+.doc section.expression {
+    flex: 0 var(--expression-height);
+
+    > header {
+        padding-inline-start: calc(var(--pad) + 4px);
+
+        .flags > .label { margin-left: 0; }
+    }
+
+    > .editor {
+        position: relative;
+
+        .icon.alert {
+            display: none;
+            position: relative;
+            float: right;
+            margin: calc(var(--pad) * 1.25);
+            color: var(--error-color);
+            z-index: 10;
+            user-select: none;
+        }
+
+        > .CodeMirror {
+            padding: var(--pad) 0 0 var(--pad);
+        }
+    }
+
+    > .editor.error > .icon.alert {
+        display: block;
+    }
+}
+
+/* tooltips: */
+#tooltip-flags {
+    .help { align-self: center; margin-block: -0.5rem; margin-inline: 0.25rem 0; }
+    li:not(.selected) .check.icon { color: inherit; opacity: 0.2; }
+    li {
+        @apply --hover {
+            color: var(--flag-hover-color);
+            em, .check.icon { color: inherit; }
+        }
+    }
+}
+
+/* Syntax highlighting */
+
+.exp-related {
+    border-bottom: var(--related-stroke);
+    border-top: var(--related-stroke);
+    margin-bottom: calc(-1 * var(--related-stroke-width));
+    margin-top: calc(-1 * var(--related-stroke-width));
+}
+
+.exp-related-left {
+    border-left: var(--related-stroke);
+    margin-left: calc(-1 * var(--related-stroke-width));
+}
+
+.exp-related-right {
+    border-right: var(--related-stroke);
+    margin-right: calc(-1 * var(--related-stroke-width));
+}
+
+.exp-selected {
+    border-top: var(--selected-stroke);
+    border-bottom: var(--selected-stroke);
+}
+
+.exp-selected-left {
+    border-left: var(--selected-stroke);
+    margin-left: calc(-1 * var(--selected-stroke-width));
+}
+
+.exp-selected-right {
+    border-right: var(--selected-stroke);
+    margin-right: calc(-1 * var(--selected-stroke-width));
+}
+
+.exp-error {
+    border-bottom: solid 2px var(--error-color);
+}
+
+.exp-warning {
+    border-bottom: dotted 2px var(--warning-color);
+}
+
+.exp-char {
+    color: var(--char-color);
+}
+
+.expression .exp-decorator {
+    color: rgb(from var(--test-input) r g b / 48%);
+}
+
+.exp-esc {
+    color: var(--esc-color);
+}
+
+.exp-quant, .exp-lazy, .exp-possessive {
+    color: var(--quant-color);
+}
+
+.exp-alt {
+    color: var(--alt-color);
+}
+
+.exp-anchor {
+    color: var(--anchor-color);
+}
+
+.exp-group, .exp-ref, .exp-lookaround {
+    color: var(--group-color);
+}
+
+.exp-charclass, .exp-set, .exp-subst {
+    color: var(--set-color);
+}
+
+.exp-comment {
+    color: var(--doc-light);
+    background: rgb(from var(--doc-black) r g b / 0.05);
+    font-style: italic;
+    border-bottom: solid 3px var(--doc-lighter);
+}
+
+.exp-special { color: var(--special-color); }
+
+.cm-regex-literal { color: var(--regex-literal); }
+.cm-regex-constant { color: var(--regex-constant); }
+.cm-regex-keyword { color: var(--alt-color); }
+.cm-regex-name { color: var(--regex-name); }

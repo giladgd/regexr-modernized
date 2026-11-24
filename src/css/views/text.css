@@ -1,0 +1,273 @@
+.doc section.text {
+    article {
+        display: flex;
+    }
+
+    > header {
+        box-sizing: border-box;
+        border-top: var(--divider);
+        .modelist li {
+            padding-top: calc(var(--pad) * 0.275);
+            padding-bottom: calc(var(--pad) * 0.275);
+        }
+
+        .button.add {
+            display: none !important; /* hiding this all the time for now. */
+        }
+
+        .result {
+            font-weight: bold;
+
+            &.error {
+                background: var(--error-color);
+                color: var(--doc-lightest);
+
+                &.warning {
+                    background: var(--warning-color);
+                }
+            }
+
+            &.pass {
+                background: var(--pass-color);
+                color: var(--doc-lightest);
+            }
+
+            &.fail {
+                background: var(--fail-color);
+                color: var(--doc-lightest);
+            }
+
+            em {
+                font-style: normal;
+                font-weight: normal;
+                opacity: 0.75;
+            }
+        }
+    }
+
+    .editor {
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        padding: var(--pad) 0 var(--pad) var(--pad);
+
+        > .pad {
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            flex: 1;
+
+            > .CodeMirror, > .CodeMirror .match {
+                color: var(--test-input);
+            }
+
+            > iframe.resizedetector {
+                opacity: 0;
+                z-index: -1000;
+                border: none;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+
+            > canvas.highlights {
+                transition: opacity var(--transition-t) var(--transition-easing);
+                position: absolute;
+            }
+
+        }
+    }
+
+    .tests {
+        display: none;
+        width: 100%;
+        padding: var(--pad);
+        box-sizing: border-box;
+        overflow: auto;
+
+        .default {
+            transition: opacity 1s var(--transition-easing);
+            padding: var(--pad) calc(var(--pad) * 0.5);
+            color: var(--doc-dark);
+        }
+
+        .list:empty ~ .default {
+            opacity: 1;
+        }
+
+        &.tests-added .default {
+            opacity: 0;
+        }
+
+        .add.button {
+            border: 1px solid rgb(from currentColor r g b / 36%);
+            color: var(--doc-black);
+            padding: 0.625rem 0.875rem;
+        }
+
+        .list:has(> li) + .add.button {
+            margin-top: var(--pad);
+        }
+
+        .list {
+            li {
+                background: var(--doc-lightest);
+                outline: solid 1px var(--test-outline-color);
+                box-shadow: 0 2px 6px var(--dark-shadow);
+                transition: margin calc(var(--transition-t) * 0.5) var(--transition-easing);
+                margin: calc(var(--pad) * 0.25) 0;
+                display: inline-block;
+                width: 100%;
+                border-radius: var(--border-radius-base);
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                @apply --hover {
+                    outline: var(--selected-stroke);
+                }
+
+                header {
+                    @apply --title;
+                    padding: calc(var(--pad) * 0.5) calc(var(--pad) * 0.75);
+
+                    input.name {
+                        color: var(--doc-darker);
+                        font-weight: bold;
+                        padding: 0;
+                        margin: 0 calc(var(--pad) * 0.5);
+                        background: transparent;
+                        border: none;
+                    }
+
+                    button.delete {
+                        @apply --link;
+                        color: var(--doc-light);
+
+                        @apply --hover {
+                            color: var(--error-color) !important;
+                        }
+                    }
+
+                    .icon.fail {
+                        display: none;
+                        color: var(--error-color);
+                    }
+
+                    .icon.pass {
+                        color: var(--pass-color);
+                    }
+
+                    .type {
+                        background: transparent;
+                        text-transform: uppercase;
+                        font-size: 0.75em;
+                        color: var(--doc-light);
+                        font-weight: bold;
+                        box-shadow: none;
+                    }
+                }
+
+                article {
+                    border-top: var(--divider);
+                    padding: calc(var(--pad) * 0.5) 0 calc(var(--pad) * 0.5) calc(var(--pad) * 0.75);
+                    display: none;
+                    height: 6em;
+                    align-items: stretch;
+
+                    .bar {
+                        background: var(--pass-color);
+                        width: 0px;
+                        outline: solid 1px var(--pass-color);
+                        margin: calc(var(--pad) * 0.25) calc(var(--pad) * 0.875) calc(var(--pad) * 0.25) calc(var(--pad) * 0.375);
+                    }
+
+                    .editor {
+                        padding: 0;
+                    }
+                }
+
+                &:not(.selected) {
+                    cursor: pointer;
+
+                    .type .icon {
+                        opacity: 0;
+                    }
+
+                    * {
+                        pointer-events: none;
+                    }
+                }
+
+                &.selected {
+                    outline: var(--selected-stroke);
+                    background: var(--doc-white);
+                    box-shadow: 0 3px 10px var(--strong-shadow);
+                    margin: calc(var(--pad) * 0.75) 0;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    article {
+                        display: flex;
+                    }
+
+                    .type {
+                        color: var(--doc-dark);
+
+                        @apply --hover {
+                            color: var(--doc-darkest);
+                        }
+                    }
+                }
+
+                &.fail {
+                    .icon.fail {
+                        display: block;
+                    }
+
+                    .icon.pass {
+                        display: none;
+                    }
+
+                    .bar {
+                        outline: solid 1px var(--error-color);
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.doc.tests-mode section.text {
+    > header .button.add {
+        display:inline-block;
+    }
+
+    > article > .editor {
+        display: none;
+    }
+
+    .tests {
+        display: block;
+    }
+}
+
+#tooltip .texthover {
+    .more {
+        display: inline-block;
+        color: var(--doc-light);
+        font-style: italic;
+        margin-top: calc(var(--pad) * 0.75);
+    }
+
+    i {
+        @apply --ellipsis;
+    }
+}

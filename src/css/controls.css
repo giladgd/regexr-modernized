@@ -1,0 +1,319 @@
+@mixin --control() {
+    --control-padding-inline: 0.5rem;
+    padding: 0.375rem var(--control-padding-inline);
+    font-size: 0.875rem;
+    border-radius: var(--control-radius);
+}
+
+input, textarea {
+    @apply --control;
+
+    border-radius: 0;
+    background: rgb(from var(--white) r g b / var(--input-opacity));
+    border: none;
+    border-bottom: solid 1px rgb(from var(--white) r g b / var(--input-opacity));
+    font-family: var(--font-family);
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--white);
+    resize: vertical;
+
+    &::placeholder {
+        color: currentColor;
+        opacity: 0.4;
+    }
+
+    &:focus {
+        outline: 0;
+
+        &::placeholder {
+            opacity: 0.2;
+        }
+    }
+
+}
+
+svg.icon {
+    width: 1.125em;
+    height: 1.125em;
+    display: inline-block;
+    fill: currentColor;
+    vertical-align: middle;
+
+    &.test-result {
+        width: 1.25em;
+        height: 1.25em;
+    }
+
+    &.inline {
+        margin-top: -0.25em;
+    }
+}
+
+.control {
+    @apply --control;
+
+    background: rgb(from var(--white) r g b / var(--control-opacity));
+}
+
+.button, .buttonbar > *, .segcontrol > * {
+    @apply --control;
+
+    background: rgb(from var(--white) r g b / var(--button-opacity));
+    display: inline-block;
+    cursor: pointer;
+    transition-property: background-color, opacity;
+    transition-duration: var(--transition-t);
+    transition-timing-function: var(--transition-easing);
+    font-weight: 550;
+    line-height: normal;
+
+    &.default {
+        font-weight: bold;
+        background: var(--theme-color);
+        color: var(--black);
+
+        @apply --hover {
+            background: var(--white);
+        }
+    }
+
+    &:hover:where(.fine-pointer *), &.selected {
+        background: rgb(from var(--white) r g b / var(--button-hover-opacity));
+    }
+
+    &.disabled {
+        opacity: var(--disabled-opacity);
+        cursor: default;
+        pointer-events: none;
+    }
+
+    > svg.icon + * {
+        margin-left: 0.25em;
+    }
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em;
+}
+
+.controlbar, .buttonbar, .segcontrol {
+    display: flex;
+    padding: 0;
+    margin: 0; /* Firefox injects a 16px margin for some reason without this. */
+}
+
+.controlbar > * {
+    margin-left: calc(var(--pad) * 0.25);
+}
+
+.buttonbar {
+    > * {
+        margin-left: 1px;
+        border-radius: 0;
+        display: inline-block;
+
+        &:first-child {
+            border-radius: var(--control-radius) 0 0 var(--control-radius);
+        }
+
+        &:last-child {
+            border-radius: 0 var(--control-radius) var(--control-radius) 0;
+        }
+    }
+}
+
+.segcontrol {
+    --segment-overhang: 0.25rem;
+    gap: 0.75rem;
+
+    > * {
+        padding-inline: calc(var(--control-padding-inline) + var(--segment-overhang));
+        margin-inline: calc(-1 * var(--segment-overhang));
+        font-weight: 400;
+
+        &:first-child { margin-inline-start: 0; }
+        &:last-child { margin-inline-end: 0; }
+    }
+}
+
+.tooltip {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    z-index: 10000;
+
+    position: absolute;
+    transform: translate(-50%, 0%);
+
+    transition-property: opacity, margin-top;
+    transition-duration: var(--transition-t);
+    transition-timing-function: var(--transition-easing);
+
+    > .content {
+        background: var(--tooltip-bg);
+        color: var(--doc-darkest);
+        padding: var(--pad);
+        border-radius: 12px;
+        max-width: min(20rem, calc(100vw - 4rem));
+        box-shadow: 0 6px 20px var(--dark-shadow);
+        overflow-wrap: break-word;
+        backdrop-filter: blur(8px);
+
+        hr { margin: 1em calc(-1 * var(--pad)); }
+
+        code {
+            font-weight: bold;
+        }
+
+        > .warningtext {
+            display: block;
+            color: var(--doc-dark);
+            margin-top: 0.5rem;
+        }
+    }
+
+    header {
+        display: flex;
+        h1 {
+            flex: 1;
+        }
+
+        button.help {
+            margin-left: 1em;
+            color: light-dark(var(--mid), var(--doc-dark));
+            transition: color var(--transition-t) var(--transition-easing);
+
+            @apply --hover { color: light-dark(var(--doc-dark), var(--doc-mid)); }
+        }
+    }
+
+    > .tip {
+        fill: var(--tooltip-bg);
+        width: 16px;
+        height: 8px;
+        transform: scale(1, -1);
+    }
+
+    &.flipped {
+        transform: translate(-50%, -100%);
+        .tip {
+            transform: scale(1, 1);
+            order: 1;
+        }
+    }
+
+    .list {
+        li {
+            @apply --link;
+
+            color: var(--doc-dark);
+
+            + li {
+                margin-top: 0.5em;
+            }
+
+            .check.icon {
+                color: transparent;
+                margin-right: 0.25em;
+            }
+
+            &.selected .check.icon {
+                color: var(--theme-color);
+            }
+
+            &:not(.inactive) {
+                @apply --hover { color: var(--doc-black); }
+            }
+
+            em {
+                font-style: normal;
+                font-weight: bold;
+                color: var(--doc-darkest);
+                padding: 0 0.15em;
+                background: rgb(from var(--doc-mid) r g b / 0.3);
+                border-radius: var(--control-radius);
+            }
+        }
+    }
+}
+
+.tooltip:has(.action-menu) { transition: none; }
+.tooltip > .content:has(> .action-menu) { padding: calc(var(--pad) / 2); }
+.action-menu {
+    display: grid;
+    row-gap: calc(var(--pad) / 4);
+
+    > * { padding-inline: 0.75rem; }
+    > :is(button, a[href]) {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding-block: 0.4rem;
+        border-radius: var(--control-radius);
+        color: inherit;
+        text-decoration: none;
+
+        .icon { color: inherit; }
+        &:hover:where(.fine-pointer *), &[aria-expanded="true"] {
+            background: rgb(from var(--selection) r g b / 8%);
+            color: inherit;
+        }
+    }
+}
+
+.example {
+    hr { margin-block: 0.875em; }
+
+    button.load {
+        @apply --link;
+        color: var(--dark);
+        float: right;
+        margin-block: -0.375rem;
+    }
+
+    code {
+        display: flow-root;
+        word-break: break-all;
+
+        i {
+            @apply --ellipsis;
+        }
+    }
+}
+
+button {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+:where(button, [role="button"], .icon-button) {
+    border-radius: var(--control-radius);
+    -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+    outline: 2px solid var(--theme-color);
+    outline-offset: -2px;
+}
+
+.icon-button {
+    display: inline-grid;
+    place-items: center;
+    width: 2.25rem;
+    padding: 0;
+    color: var(--doc-dark);
+    flex: none;
+    @apply --hover { background: var(--selection); }
+}
+
+.icon-button, .header-actions > button { height: 2.25rem; }
+.icon-button svg.icon, .header-actions svg.icon { width: 1.25rem; height: 1.25rem; }

@@ -1,0 +1,85 @@
+.doc > section.tools > header {
+    flex-shrink: 0;
+
+    .toollist { overflow-x: auto; }
+    .max { flex-shrink: 0; }
+}
+
+.doc > section.tools > article {
+    display: flex;
+    flex-direction: column;
+    background: var(--doc-lightest);
+
+    button.help {
+        @apply --link;
+        /* this is a bit hacky, but lets us reuse the help icon everywhere. */
+        position: absolute;
+        right: calc(var(--pad) * 0.25);
+        transform: translate(0, -50%) translate(0, calc(var(--input-height) / 2));
+        padding: 0;
+        margin-right: 0.5rem;
+        color: var(--doc-mid);
+        z-index: 10;
+        @apply --hover {
+            color: var(--doc-darkest) !important;
+        }
+    }
+
+    .inputtool {
+        display: none;
+        flex-direction: column;
+        flex: 1;
+
+        .editor {
+            position: relative;
+            flex: 0 var(--input-height);
+            background: var(--doc-white);
+            border-bottom: var(--divider);
+
+            > .CodeMirror {
+                padding: var(--pad) 0 0 var(--pad);
+                height: 100%;
+                font-weight: bold;
+            }
+        }
+
+        .result {
+            flex: 1;
+
+            textarea {
+                box-sizing: border-box;
+                padding: var(--pad) 0 var(--pad) var(--pad);
+                resize: none;
+                display: block;
+                border: 0;
+                background: none;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                font-family: var(--monospace);
+                font-size: var(--font-size);
+                color: var(--doc-black);
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    .content {
+        flex: 1 1 0%; /* fix for FireFox (vs just `1`) */
+        min-height: 0; /* fix for Chrome 72+ */
+        overflow-y: auto;
+        display: block;
+        padding: var(--pad);
+    }
+
+    &.showinput {
+        .inputtool {
+            display: flex;
+        }
+        .content {
+            display: none;
+        }
+    }
+}

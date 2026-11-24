@@ -21,19 +21,6 @@
 # BUILD/DEBUGGING
 #-----------------------------
 node_modules/
-.sass-cache/
-build/
-
-#-----------------------------
-# PROJECT SPECIFIC
-#-----------------------------
-regexr.css
-*.map
-scripts.min.js
-yarn.lock
-TMP_*
-/deploy
-server/cache/
-server/Config.php
-server/**/.php_cs.cache
-server/vendor/
+dist/
+test-results/
+playwright-report/

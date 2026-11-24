@@ -1,0 +1,88 @@
+.doc {
+    --island-gap: 12px;
+    --expression-height: calc(var(--title-height) + var(--input-height));
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    margin: 4px 16px 16px 0;
+    gap: var(--island-gap);
+
+    > .editor-island, > .tools {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        background: var(--doc-white);
+        box-shadow: 0 4px 48px var(--island-shadow-color);
+    }
+
+    > .editor-island {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 calc(var(--expression-height) - var(--island-gap));
+        min-height: 0;
+    }
+
+    section {
+        background: var(--doc-white);
+        color: var(--doc-dark);
+        flex: 1 1 0%; /* fix for FireFox (vs just `1`) */
+        min-height: 0; /* fix for Chrome 72+ */
+        transition: flex var(--transition-t) var(--transition-easing);
+
+        display: flex;
+        flex-direction: column;
+
+        > header {
+            @apply --title;
+            color: var(--doc-darkest);
+            background: var(--title-bg);
+
+            > .max {
+                margin-left: auto;
+            }
+        }
+
+        > article {
+            flex: 1;
+            min-height: 0; /* fix for Chrome 72+ */
+            border-top: var(--divider);
+        }
+
+        &.closed {
+            flex: 0 var(--title-height);
+
+            .max svg { transform: rotate(180deg); }
+        }
+    }
+
+    &.tests-mode {
+        section.tools {
+            display: none;
+        }
+    }
+
+    /* overwrite colors: */
+    input, textarea {
+        background:  rgb(from var(--doc-white) r g b / var(--input-opacity));
+        border-color: rgb(from var(--doc-white) r g b / var(--input-opacity));
+    }
+
+    .control {
+        background: rgb(from var(--doc-white) r g b / var(--control-opacity));
+    }
+
+    .button, .buttonbar > *, .segcontrol > * {
+        background: transparent;
+
+        border-radius: var(--control-radius);
+
+        &:hover:where(.fine-pointer *), &.selected {
+            background: var(--selection);
+        }
+
+        &.default {
+            @apply --hover { background: var(--doc-white); }
+        }
+    }
+}

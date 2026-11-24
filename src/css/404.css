@@ -1,0 +1,81 @@
+@import "@fontsource-variable/inter";
+
+:root {
+    color-scheme: light dark;
+    font-family: 'Inter Variable', sans-serif;
+    background: light-dark(#ececec, #1f1f1f);
+    color: light-dark(#1f1f1f, #e3e3e3);
+}
+
+:root.dark { color-scheme: dark; }
+:root.light { color-scheme: light; }
+
+body {
+    margin: 0;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+}
+
+main {
+    display: grid;
+    justify-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 650;
+    letter-spacing: -0.055em;
+}
+
+.mark {
+    display: grid;
+    width: 1.25rem;
+    aspect-ratio: 1;
+    border-radius: 18.75%;
+    background: light-dark(#80bff0, #282d33);
+}
+
+.mark::before {
+    content: "";
+    background: light-dark(#282d33, #80bff0);
+    mask: url("/assets/icons/safari-pinned-tab.svg") center / contain no-repeat;
+}
+
+.modernized {
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(6rem, 18vw, 12rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.055em;
+}
+
+a {
+    padding: 0.75rem 1.25rem;
+    border-radius: 7px;
+    background: light-dark(#303030, #e3e3e3);
+    color: light-dark(#fff, #1f1f1f);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    a:hover { background: light-dark(#000, #fff); }
+}
+
+a:focus-visible {
+    outline: 2px solid light-dark(#303030, #e3e3e3);
+    outline-offset: 4px;
+}

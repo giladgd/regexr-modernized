@@ -1,0 +1,98 @@
+name: Website
+
+on:
+    push:
+        branches: ["**"]
+    pull_request:
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+env:
+    HUSKY: "0"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        outputs:
+            version: ${{ steps.preview.outputs.version }}
+            artifact: website-${{ github.run_id }}-${{ github.run_attempt }}
+        steps:
+            - uses: actions/checkout@v7
+              with:
+                  fetch-depth: 0
+                  persist-credentials: false
+            - uses: actions/setup-node@v7
+              with:
+                  node-version-file: .nvmrc
+                  cache: npm
+            - run: npm ci
+            - run: npm run lint -- --max-warnings 0
+            - name: Check conventional commits
+              env:
+                  HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+                  BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+              run: |
+                  first=$(git log "$HEAD_SHA" --diff-filter=A --format=%H -- .husky/commit-msg | tail -1)
+                  from="$first^"
+                  if git merge-base --is-ancestor "$first" "$BASE_SHA" 2>/dev/null; then
+                      from=$(git merge-base "$BASE_SHA" "$HEAD_SHA")
+                  fi
+                  npm run commitlint -- --from "$from" --to "$HEAD_SHA"
+            - run: npm test
+            - name: Resolve the next version
+              id: preview
+              if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+              run: npm run release:version
+            - name: Build the release candidate
+              if: steps.preview.outputs.version != ''
+              env:
+                  RELEASE_VERSION: ${{ steps.preview.outputs.version }}
+              run: |
+                  npm version "$RELEASE_VERSION" --no-git-tag-version
+                  npm run build
+            - run: npx --no-install playwright install --with-deps
+            - run: npm run test:e2e
+            - name: Upload the versioned website
+              if: steps.preview.outputs.version != ''
+              uses: actions/upload-pages-artifact@v5
+              with:
+                  name: website-${{ github.run_id }}-${{ github.run_attempt }}
+                  path: dist
+                  retention-days: 30
+
+    release:
+        name: Release v${{ needs.build.outputs.version }} and deploy
+        needs: build
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && needs.build.outputs.version != ''
+        runs-on: ubuntu-latest
+        environment:
+            name: website
+            url: ${{ steps.deploy.outputs.page_url }}
+        concurrency:
+            group: website-release
+            cancel-in-progress: false
+        permissions:
+            contents: write
+            pages: write
+            id-token: write
+        steps:
+            - uses: actions/checkout@v7
+              with:
+                  fetch-depth: 0
+            - uses: actions/setup-node@v7
+              with:
+                  node-version-file: .nvmrc
+                  package-manager-cache: false
+            - run: npm ci
+            - name: Publish the GitHub release
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  RELEASE_VERSION: ${{ needs.build.outputs.version }}
+              run: npm run release
+            - name: Deploy the approved website
+              id: deploy
+              uses: actions/deploy-pages@v5
+              with:
+                  artifact_name: ${{ needs.build.outputs.artifact }}

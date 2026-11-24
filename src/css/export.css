@@ -1,0 +1,6 @@
+/* this shares values with js: */
+#export {
+    &.theme { color: var(--theme-color); }
+    &.match { color: var(--match-color); }
+    &.selected-stroke { color: var(--selected-stroke-color); }
+}

@@ -1,0 +1,27 @@
+@media (max-width: 900px), (pointer: coarse) {
+    html, body { touch-action: pan-x pan-y; }
+}
+
+@media (max-width: 900px) {
+    body > .container > .app {
+        --sidebar-width: 100vw;
+        width: 200vw;
+        transform: translateX(-100vw);
+        transition: transform var(--sidebar-motion);
+    }
+
+    body > .container > .app.sidebar-open { transform: translateX(0); }
+    .app .sidebar { margin: 0; }
+    .app .doc { margin: 4px 8px 8px; --island-gap: 8px; }
+    .doc section > header { padding: 0 0.625rem; }
+    .segcontrol > * { --control-padding-inline: 0.5rem; }
+}
+
+@media (max-width: 23rem) {
+    .toollist { gap: 0.5rem; }
+    .toollist > * { --control-padding-inline: 0.125rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
+}
