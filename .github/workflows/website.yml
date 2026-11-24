@@ -117,4 +117,5 @@ jobs:
               run: |
                   curl --fail --silent --show-error --retry 3 --max-time 15 --retry-max-time 60 \
                       --write-out 'IndexNow HTTP %{http_code}\n' --get 'https://api.indexnow.org/indexnow' \
-                      --data-urlencode 'url=https://regexr-modernized.giladgd.com/' --data-urlencode "key=$INDEXNOW_KEY"
+                      --data-urlencode 'url=https://regexr-modernized.giladgd.com/' --data-urlencode "key=$INDEXNOW_KEY" \
+                      --data-urlencode "keyLocation=https://regexr-modernized.giladgd.com/$INDEXNOW_KEY.txt"
