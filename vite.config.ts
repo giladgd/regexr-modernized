@@ -42,7 +42,7 @@ export default defineConfig({
     }],
     css: {postcss: {plugins: [mixins()]}},
     define: {
-        __VERSION__: JSON.stringify(pkg.version),
+        __VERSION__: JSON.stringify(process.env.RELEASE_VERSION || pkg.version),
         __BUILD_DATE__: JSON.stringify(new Date().toISOString()
             .slice(0, 10))
     },

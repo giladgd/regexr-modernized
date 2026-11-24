@@ -49,9 +49,7 @@ jobs:
               if: steps.preview.outputs.version != ''
               env:
                   RELEASE_VERSION: ${{ steps.preview.outputs.version }}
-              run: |
-                  npm version "$RELEASE_VERSION" --no-git-tag-version
-                  npm run build
+              run: npm run build
             - name: Upload the versioned website
               if: steps.preview.outputs.version != ''
               uses: actions/upload-pages-artifact@v5
@@ -72,9 +70,12 @@ jobs:
             group: website-release
             cancel-in-progress: false
         permissions:
-            contents: write
-            pages: write
             id-token: write
+            contents: write
+            issues: write
+            pull-requests: write
+            discussions: write
+            pages: write
         steps:
             - uses: actions/checkout@v7
               with:
