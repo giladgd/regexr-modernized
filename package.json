@@ -24,6 +24,7 @@
   "scripts": {
     "lint": "eslint .",
     "format": "eslint . --fix",
+    "test": "tsc --noEmit",
     "start": "vite",
     "build": "tsc --noEmit && vite build",
     "start:build": "serve dist -l 43638",
