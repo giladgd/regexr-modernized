@@ -30,8 +30,8 @@
     "start:build": "serve dist -l 43638",
     "prepare": "husky",
     "commitlint": "commitlint",
-    "release:version": "vite-node tools/release.ts",
-    "release": "vite-node tools/release.ts --publish"
+    "release:version": "vite-node scripts/release.ts",
+    "release": "vite-node scripts/release.ts --publish"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.4",

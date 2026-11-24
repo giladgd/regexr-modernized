@@ -52,10 +52,11 @@ jobs:
               run: npm run build
             - name: Upload the versioned website
               if: steps.preview.outputs.version != ''
-              uses: actions/upload-pages-artifact@v5
+              uses: actions/upload-artifact@v7
               with:
                   name: website-${{ github.run_id }}-${{ github.run_attempt }}
                   path: dist
+                  if-no-files-found: error
                   retention-days: 30
 
     release:
@@ -85,6 +86,20 @@ jobs:
                   node-version-file: .nvmrc
                   package-manager-cache: false
             - run: npm ci
+            - name: Download the build
+              uses: actions/download-artifact@v8
+              with:
+                  name: ${{ needs.build.outputs.artifact }}
+                  path: dist
+            - name: Prepare build
+              env:
+                  INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+              run: printf '%s' "$INDEXNOW_KEY" > "dist/$INDEXNOW_KEY.txt"
+            - name: Upload the Pages artifact
+              uses: actions/upload-pages-artifact@v5
+              with:
+                  name: github-pages-${{ github.run_attempt }}
+                  path: dist
             - name: Publish the GitHub release
               env:
                   GH_TOKEN: ${{ github.token }}
@@ -94,4 +109,12 @@ jobs:
               id: deploy
               uses: actions/deploy-pages@v5
               with:
-                  artifact_name: ${{ needs.build.outputs.artifact }}
+                  artifact_name: github-pages-${{ github.run_attempt }}
+            - name: Notify IndexNow
+              continue-on-error: true
+              env:
+                  INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+              run: |
+                  curl --fail --silent --show-error --retry 3 --max-time 15 --retry-max-time 60 \
+                      --write-out 'IndexNow HTTP %{http_code}\n' --get 'https://api.indexnow.org/indexnow' \
+                      --data-urlencode 'url=https://regexr-modernized.giladgd.com/' --data-urlencode "key=$INDEXNOW_KEY"
