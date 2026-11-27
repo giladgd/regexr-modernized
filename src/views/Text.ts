@@ -37,7 +37,6 @@ export class Text extends EventDispatcher {
     public modeList!: List<{id: Mode, label: string}>;
     public defaultText!: string;
     public editor!: CodeMirror.Editor;
-    public canvas!: HTMLCanvasElement;
     public highlighter!: TextHighlighter;
     public hover!: TextHover;
     public _result?: SolveResult;
@@ -159,20 +158,19 @@ export class Text extends EventDispatcher {
         editor.on("scroll", () => this._update());
         editor.on("cursorActivity", () => this._updateSelected());
 
-        const detector = $.create("iframe", "resizedetector", null, textEl), win = detector.contentWindow!;
-        const canvas = this.canvas = $.create("canvas", "highlights", null, textEl);
-        textEl.appendChild(editor.getWrapperElement()); // move the editor on top of the iframe & canvas.
-
-        const resize = () => {
-            const w = win.innerWidth | 0, h = win.innerHeight | 0;
-            this._startResize();
-            Utils.defer(() => this._handleResize(w, h), "text_resize", 250);
-        };
-        win.onresize = resize;
-        resize();
-
+        const canvas = $.create("canvas", "highlights");
+        textEl.prepend(canvas);
         this.highlighter = new TextHighlighter(editor, canvas, $.getCSSValue("match", "color"), $.getCSSValue("selected-stroke", "color"));
         this.hover = new TextHover(editor, this.highlighter);
+
+        const refresh = () => {
+            canvas.width = textEl.clientWidth;
+            canvas.height = textEl.clientHeight;
+            editor.refresh();
+            this.highlighter.redraw();
+        };
+        new ResizeObserver(refresh).observe(textEl);
+        void document.fonts.ready.then(refresh);
     }
 
     public _handleThemeChange() {
@@ -266,14 +264,6 @@ export class Text extends EventDispatcher {
         this.dispatchEvent("change");
     }
 
-    public _startResize() {
-        const canvas = this.canvas, style = canvas.style;
-        style.visibility = "hidden";
-        style.opacity = "0";
-        // keeps it from causing scrollbars:
-        canvas.width = canvas.height = 1;
-    }
-
     public _mouseResult(evt: MouseEvent) {
         const tt = app.tooltip.hover, res = this._result, err = res && res.error;
         let str = "";
@@ -314,15 +304,6 @@ export class Text extends EventDispatcher {
 
     public _errorText(err: RegexError) {
         return Utils.htmlSafe(err.message || "") || app.reference.getError(err);
-    }
-
-    public _handleResize(w: number, h: number) {
-        const canvas = this.canvas, style = canvas.style;
-        style.visibility = style.opacity = "";
-        canvas.width = w;
-        canvas.height = h;
-        this.editor.refresh();
-        this._deferUpdate();
     }
 
     // Test mode:
